@@ -67,6 +67,46 @@ canvas{position:absolute;left:0;top:0;touch-action:none}
 button{font:inherit;font-weight:700;font-size:20px;padding:12px 36px;border:0;border-radius:999px;background:var(--accent);color:#fff}
 button:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
 #combo{position:absolute;left:0;right:0;top:6%;text-align:center;font-size:30px;font-weight:700;color:var(--accent);pointer-events:none;opacity:0;transition:opacity .3s}
+
+.dif{font-size:15px;padding:10px 14px}
+#ds{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dif:last-child{grid-column:1/-1}
+#ph .tb{font-size:14px;padding:8px 10px}
+#sks{display:flex;gap:5px}
+.sk{width:58px;height:50px;font-size:11px;line-height:1.2;padding:2px;border-radius:12px;border:3px solid var(--accent);color:var(--fg);background:linear-gradient(90deg,var(--accent) var(--p,0%),var(--card) var(--p,0%))}
+.sk small{font-size:10px}.sk.rd{color:#fff;box-shadow:0 0 0 3px var(--fg)}
+#cmbx{position:absolute;right:10px;top:4px;font-weight:800;font-size:18px;color:var(--accent);pointer-events:none;-webkit-text-stroke:1px var(--bg);paint-order:stroke fill}
+#fl{position:absolute;inset:0;pointer-events:none;opacity:0}#fl.on{animation:fl .6s ease-out}
+@keyframes fl{from{opacity:.6}to{opacity:0}}
+#bn{position:absolute;left:0;right:0;top:34%;text-align:center;font-size:44px;font-weight:900;color:#fff;pointer-events:none;opacity:0;-webkit-text-stroke:2px var(--bc);paint-order:stroke fill;text-shadow:0 3px 10px rgba(0,0,0,.4)}
+#bn.on{animation:bn 1s ease-out}
+@keyframes bn{0%{opacity:0;transform:scale(2.4)}15%{opacity:1;transform:scale(1)}75%{opacity:1}100%{opacity:0;transform:translateY(-14px)}}
+@keyframes bnr{0%,70%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){#fl.on{animation:none}#bn.on{animation:bnr 1s}}
+
+button:disabled{opacity:.5}
+#home{position:fixed;inset:0;z-index:4;background:var(--bg);display:flex;flex-direction:column;align-items:center;gap:12px;padding:calc(env(safe-area-inset-top,0px) + 14px) 18px calc(env(safe-area-inset-bottom,0px) + 14px);overflow:auto;touch-action:pan-y}
+#hb{display:flex;justify-content:space-between;width:100%;font-size:20px;font-weight:800}
+#home h1{margin:4px 0 0;font-size:38px}
+#hpt{display:flex;gap:16px}.pm{text-align:center;font-size:12px;font-weight:700}
+#home #ds{width:100%;max-width:340px}.dif small{font-size:11px;font-weight:400}
+#home .tb{font-size:17px;padding:12px 18px}
+#mg{position:fixed;inset:0;z-index:6;background:#3a9d4f;padding-top:env(safe-area-inset-top,0px)}
+#mc{width:100%;height:100%}
+#rr{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(0,0,0,.6);color:#fff;text-align:center;padding:24px}
+#rr h1{margin:0;font-size:34px}#rr p{margin:0;font-size:20px;line-height:1.8}
+
+.au{width:56px;height:40px;font-size:11px;line-height:1.2;padding:2px;border-radius:12px;border:3px solid var(--accent);color:var(--fg);background:var(--card)}.au.on{background:var(--accent);color:#fff}.au small{font-size:10px}
+#al{padding:0 14px 20px}.ar{position:relative;background:var(--card);border-radius:12px;padding:8px 12px 10px;margin:0 0 8px;overflow:hidden}.ar b{display:block;font-size:14px}.ar span{font-size:12px;opacity:.85}.ar i{position:absolute;left:0;bottom:0;height:4px;background:var(--accent)}.ar.dn{opacity:.55}
+#tst{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 10px);transform:translateX(-50%);z-index:9;display:none;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:14px;font-size:13px;font-weight:700;line-height:1.6;text-align:center;width:max-content;max-width:90%;pointer-events:none}
+
+.sk{background:linear-gradient(90deg,var(--ac,var(--accent)) var(--p,0%),var(--card) var(--p,0%))}.sk.rd{color:#222}
+
+#hpt{display:grid;grid-template-columns:repeat(3,1fr);width:100%;max-width:340px;gap:0}.pm{width:100%}
+.cd,.pm{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#inf{position:fixed;inset:0;z-index:8;background:rgba(0,0,0,.55);align-items:center;justify-content:center;padding:24px}
+.ic{position:relative;background:var(--bg);color:var(--fg);border-radius:20px;padding:18px 18px 12px;width:100%;max-width:320px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.ic h2{margin:2px 0 8px;font-size:22px}.ic p{margin:8px 0;font-size:14px;line-height:1.6}.ic small{font-size:12px;opacity:.8}
+.it{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:14px;font-weight:700}.it span{background:var(--card);border-radius:10px;padding:6px 4px}
 </style>
 </head>
 <body>
@@ -75,55 +115,73 @@ button:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
   <div style="text-align:center"><span class="lbl">コイン</span><span class="big" id="cc">0</span></div>
   <div style="text-align:right"><span class="lbl">ベスト</span><span class="big" id="bs">0</span></div>
 </header>
-<div id="me"><div id="mel"><span id="pv"></span><span id="mn"></span><b id="pa" style="float:right"></b><div class="hp"><i id="php"></i></div></div><button id="skb"></button></div>
-<div id="enemy"><div id="em">🟢</div><div id="ei"><div id="en"></div><div class="hp"><i id="ehp"></i></div><div class="hp" style="height:6px"><i id="eatk" style="width:0"></i></div></div></div>
+<div id="me"><div id="mel"><span id="pv"></span><span id="mn"></span><b id="pa" style="float:right"></b><div class="hp"><i id="php"></i></div></div><div id="sks"></div></div>
+<div id="enemy"><div id="em">🟢</div><div id="ei"><div id="en"></div><div class="hp"><i id="ehp"></i></div><div class="hp" style="height:6px"><i id="eatk" style="width:0"></i></div></div><button id="au" class="au"></button></div>
 <div id="ms"><div id="mt"></div><i id="mb"></i></div>
 <div id="wrap">
   <canvas id="c"></canvas>
-  <div id="combo"></div>
-  <div id="ov">
-    <h1 id="t">ぷにチェイン</h1>
-    <p id="m">同じ色のぷにを3つ以上なぞってつなげて敵にダメージ。弱点の色は2倍！ミッションを時間内にクリアすると攻撃力アップ、失敗すると敵が強化。</p>
-    <div id="ds"><button class="dif" data-d="easy">やさしい</button><button class="dif" data-d="normal">ふつう</button><button class="dif" data-d="hard">むずかしい</button></div>
-    <div class="mr"><button class="tb" data-o="s">キャラ選択</button><button class="tb" data-o="g">ガチャ</button></div>
-    <p id="cb"></p>
-  </div>
+  <div id="combo"></div><div id="cmbx"></div><div id="fl"></div><div id="bn"></div>
+  <div id="ov" style="display:none"><h1 id="t"></h1><p id="m"></p><div class="mr"><button class="tb" id="rt">もう一度</button><button class="tb" id="hm">ホームへ</button></div></div>
 </div>
 
+<div id="home">
+  <div id="hb"><span>🪙 <b id="hc">0</b></span><span>⭐ <b id="hp">0</b> pt</span></div>
+  <h1>ぷにチェイン</h1>
+  <div id="hpt"></div>
+  <p class="dim" style="max-width:300px;text-align:center;margin:0">同じ色のぷにを3つ以上なぞってつなげて敵にダメージ。弱点の色は2倍！</p>
+  <div id="ds"><button class="dif" data-d="easy"></button><button class="dif" data-d="normal"></button><button class="dif" data-d="hard"></button><button class="dif" data-d="expert"></button><button class="dif" data-d="hell"></button></div>
+  <div class="mr"><button class="tb" data-o="g">ガチャ</button><button class="tb" data-o="u">育成</button><button class="tb" data-o="s">編成</button></div>
+  <button class="tb" id="mgb">🏁 ぷにグランプリ（100pt）</button>
+  <button class="tb" id="acb" data-o="a"></button>
+  <p class="dim" id="hh" style="max-width:300px;text-align:center;margin:0"></p>
+</div>
+<div id="mg" style="display:none"><canvas id="mc"></canvas><div id="rr"><h1 id="rrt"></h1><p id="rrm"></p><button id="rrb">ホームへ</button></div></div>
+<div id="inf" style="display:none"></div>
+<div id="tst"></div>
 <div id="pn" style="display:none"></div>
 <script>
 const COLORS=['#ff6b81','#4dabf7','#51cf66','#ffd43b','#b197fc'];
 const COLS=6,ROWS=8;
 // col:使う色数 hp:敵HP倍率 atk:反撃間隔倍率 dmg:敵ダメージ倍率
-const DIFF={easy:{col:4,hp:.7,atk:1.4,dmg:.7,ms:1.4,cn:1},normal:{col:5,hp:1,atk:1,dmg:1,ms:1,cn:1.5},hard:{col:5,hp:1.5,atk:.7,dmg:1.3,ms:.8,cn:2.5}};
+const DIFF={easy:{col:4,hp:.7,atk:1.4,dmg:.7,ms:1.4,cn:.5},normal:{col:5,hp:1,atk:1,dmg:1,ms:1,cn:.8},hard:{col:5,hp:1.5,atk:.7,dmg:1.3,ms:.8,cn:1.3},expert:{col:5,hp:2.2,atk:.55,dmg:1.7,ms:.7,cn:2},hell:{col:5,hp:3.2,atk:.4,dmg:2.2,ms:.6,cn:3}};
 // 名前, 見た目, HP, 反撃間隔(秒), ダメージ
 const ENEMIES=[['ぷるぷるスライム','🟢',90,6,10],['こうもりん','🦇',120,5,12],['タコまる','🐙',160,5,14],['おにおに','👹',210,4.5,16],['ドラゴン','🐉',300,4,20]];
-const RK=['N','R','SR','SSR'],RC=['#868e96','#339af0','#cc5de8','#f59f00'],RM=[[1,1],[1.25,1.2],[1.6,1.45],[2.1,1.8]],RATE=[.6,.28,.1];
-const SKN={heal:'ヒール',barrier:'バリア',stop:'ストップ',burst:'バースト'};
-const SKD={heal:'HPを35%回復',barrier:'5秒ダメージ無効',stop:'敵を6秒止める',burst:'次のつなぎが3倍'};
+const BOSS=[['ドラゴンロード','🐲',550,3.6,22],['まおう','😈',700,3.4,24],['クラーケン','🦑',850,3.2,26],['ゴーレム','🗿',1000,3,28]];
+const RK=['N','R','SR','SSR','UR','UR⁺','UR⁺⁺'],RC=['#868e96','#339af0','#cc5de8','#f59f00','#ff2d95','#e03131','linear-gradient(90deg,#ff2d95,#f59f00,#40c057,#339af0,#7048e8)'],RM=[[1,1],[1.25,1.2],[1.6,1.45],[2.1,1.8],[2.7,2.3],[3.4,2.9],[4.4,3.7]],RATE=[.584,.28,.1,.02,.01,.005];
+const SKN={heal:'ヒール',barrier:'バリア',stop:'ストップ',burst:'バースト',meteor:'メテオ',power:'パワー',weaken:'よわらせ',nova:'ノヴァ',fortress:'ようさい'};
+const SKD={heal:'HPを35%回復',barrier:'5秒ダメージ無効',stop:'敵を6秒止める',burst:'次のつなぎが3倍',meteor:'敵のHPを35%削る',power:'攻撃力+0.5（ずっと）',weaken:'敵の攻撃力30%ダウン',nova:'敵HP60%ダメージ＋HP20%回復',fortress:'10秒ダメージ無効＋HP30%回復'};
 // 名前, 得意色(COLORSの番号), かざり, ランク(0=N..3=SSR), HP, 攻撃, スキル, スキルがたまる数
-const CH=[['ぷにまる',2,'',0,100,1,'heal',22],['ぷるる',1,'💧',0,90,1.1,'burst',26],['もこぷに',3,'🌼',0,115,.9,'barrier',24],['ぽよん',4,'🎀',0,100,1,'stop',26],
-['ほのぷに',0,'🔥',1,95,1.3,'burst',24],['こおりん',1,'❄️',1,120,1.1,'stop',22],['はっぱん',2,'🍀',1,130,1,'heal',20],['びりぷに',3,'⚡',1,100,1.2,'barrier',22],
-['おうじぷに',4,'👑',2,125,1.3,'burst',22],['ほしぷに',3,'⭐',2,140,1.2,'stop',20],['ひめぷに',0,'💖',3,150,1.4,'heal',18],['りゅうぷに',1,'🐉',3,140,1.6,'burst',20]];
+const CH=[['ぷにまる',2,'',0,100,1,'heal',22],['ぷるる',1,'💧',0,90,1.1,'weaken',26],['もこぷに',3,'🌼',0,115,.9,'power',24],['ぽよん',4,'🎀',0,100,1,'stop',26],
+['ほのぷに',0,'🔥',1,95,1.3,'meteor',24],['こおりん',1,'❄️',1,120,1.1,'stop',22],['はっぱん',2,'🍀',1,130,1,'heal',20],['びりぷに',3,'⚡',1,100,1.2,'weaken',22],
+['おうじぷに',4,'👑',2,125,1.3,'power',22],['ほしぷに',3,'⭐',2,140,1.2,'meteor',20],['ひめぷに',0,'💖',3,150,1.4,'heal',18],['りゅうぷに',1,'🐉',3,140,1.6,'meteor',20],
+['ふわぷに',0,'☁️',0,105,1,'heal',24],['みずぷに',1,'💦',0,95,1,'stop',25],['くさぷに',2,'🌱',0,110,.95,'barrier',24],['ひよぷに',3,'🐥',0,100,1.05,'burst',25],['ぶどぷに',4,'🍇',0,105,.95,'heal',23],['いちごん',0,'🍓',0,100,1,'barrier',25],['ソーダぷに',1,'🥤',0,90,1.1,'burst',26],['めろぷに',2,'🍈',0,115,.9,'stop',24],
+['ほむらん',0,'🌋',1,100,1.25,'meteor',23],['しずくん',1,'🌊',1,125,1.1,'heal',21],['もりぷに',2,'🌳',1,130,1,'barrier',22],['ひかりん',3,'✨',1,105,1.2,'stop',21],['よるぷに',4,'🌙',1,110,1.2,'burst',22],['さくらん',0,'🌸',1,120,1.1,'heal',22],['つららん',1,'🧊',1,115,1.15,'stop',21],['でんぷに',3,'🔋',1,100,1.25,'power',22],
+['まおうぷに',4,'😈',2,130,1.35,'weaken',21],['てんしぷに',3,'😇',2,140,1.2,'heal',20],['にんじゃぷに',1,'🌀',2,125,1.3,'stop',21],['ほのおうじ',0,'☄️',2,130,1.3,'burst',22],['もりのせい',2,'🧚',2,145,1.15,'heal',20],
+['だいおうぷに',4,'🌌',3,150,1.5,'burst',18],['ふぶきひめ',1,'☃️',3,145,1.5,'stop',18],['ほうおうぷに',0,'🌅',3,150,1.45,'heal',18],
+['にじぷに',3,'🌈',4,165,1.7,'nova',24],['ぎんがぷに',4,'💫',4,170,1.6,'fortress',20],['せいりゅう',1,'🐲',4,160,1.8,'meteor',20],['かみぷに',0,'👼',4,175,1.65,'power',16],
+['こうりんぷに',3,'☀️',5,185,1.85,'nova',22],['げっこうぷに',4,'🌕',5,190,1.8,'fortress',20],['しんじゅぷに',1,'🔱',5,180,1.9,'meteor',20],
+['きせきぷに',2,'💎',6,210,2.0,'nova',20],['てんちぷに',3,'🌠',6,200,2.1,'power',18]];
 let sv={coins:150,own:{0:1},sel:0};
 try{const x=JSON.parse(localStorage.getItem('puni-save'));if(x&&x.own)sv=x}catch(e){}
+sv.party=(sv.party||[sv.sel||0]).filter(i=>sv.own[i]).slice(0,3);for(let i=0;sv.party.length<3&&i<CH.length;i++)if(!sv.party.includes(i)&&(sv.own[i]||i<3)){sv.own[i]=sv.own[i]||1;sv.party.push(i)}sv.lv=sv.lv||{};sv.pts=sv.pts||0;sv.st=Object.assign({k:0,b:0,r:0,pl:0,mc:0,rb:0},sv.st);sv.ac=sv.ac||{};sv.auto=!!sv.auto;
 const save=()=>{try{localStorage.setItem('puni-save',JSON.stringify(sv))}catch(e){}};
 const star=i=>Math.min(5,(sv.own[i]||1)-1);
-const stat=i=>{const c=CH[i],m=RM[c[3]],q=1+.1*star(i);return{hp:Math.round(c[4]*m[0]*q),atk:+(c[5]*m[1]*q).toFixed(2)}};
+const LVMAX=10,lvl=i=>sv.lv[i]||1,lvCost=i=>Math.round((40+20*lvl(i))*(1+CH[i][3]*.5));
+const stat=i=>{const c=CH[i],m=RM[c[3]],q=1+.1*star(i)+.06*(lvl(i)-1);return{hp:Math.round(c[4]*m[0]*q),atk:+(c[5]*m[1]*q).toFixed(2)}};
 let ch=CH[sv.sel]||CH[0],sg=0,burst=0,barrier=0,freeze=0,pmax=100,ab=1,runCoins=0,gres='';
-let pw=1,mi=null,mscd=0,_h='';
+let pw=1,mi=null,mscd=0,_h='',pm='s',cmb=0,ct=0,cm=1,sgs=[0,0,0],fxs=[],pt=[],sbs=[],ax=0;
 const mkp=(i,z)=>'<div class="pn" style="--c:'+COLORS[CH[i][1]]+';font-size:'+z+'px"><b>'+CH[i][2]+'</b></div>';
 function card(i,tag){
   const c=CH[i],t=stat(i);
   if(!sv.own[i]&&!tag)return '<div class="cd lk">'+mkp(i,48)+'<div class="nm">？？？</div><div class="st">'+RK[c[3]]+'ランク</div></div>';
-  return '<div class="cd'+(!tag&&sv.sel===i?' sel':'')+'"'+(tag?'':' data-i="'+i+'"')+'><span class="rk" style="background:'+RC[c[3]]+'">'+RK[c[3]]+'</span>'+(tag?'<span class="tg">'+tag+'</span>':'')+mkp(i,48)+'<div class="nm">'+c[0]+'</div><div class="st">'+'★'.repeat(star(i))+' HP'+t.hp+' 攻'+t.atk+'</div><div class="st">'+SKN[c[6]]+'</div></div>';
+  return '<div class="cd'+(!tag&&pm==='s'&&sv.party.includes(i)?' sel':'')+'"'+' data-info="'+i+'"'+(tag?'':' data-i="'+i+'"')+'><span class="rk" style="background:'+RC[c[3]]+'">'+RK[c[3]]+'</span>'+(tag||pm==='s'&&sv.party.includes(i)?'<span class="tg">'+(tag||'編成'+(sv.party.indexOf(i)+1))+'</span>':'')+mkp(i,48)+'<div class="nm">'+c[0]+'</div><div class="st">Lv'+lvl(i)+' '+'★'.repeat(star(i))+'<br>HP'+t.hp+' 攻'+t.atk+'</div><div class="st">'+SKN[c[6]]+(pm==='u'&&!tag?'　'+(lvl(i)>=LVMAX?'MAX':'↑'+lvCost(i)+'🪙'):'')+'</div></div>';
 }
-function openPn(m){
+function openPn(m){pm=m;
   const p=$('pn'),c=CH[sv.sel];
-  let h='<div id="ph"><b>🪙 '+sv.coins+'</b><span><button class="tb'+(m==='s'?' on':'')+'" data-m="s">キャラ</button> <button class="tb'+(m==='g'?' on':'')+'" data-m="g">ガチャ</button></span><button class="tb" id="px">とじる</button></div>';
-  if(m==='s')h+='<div id="grid">'+CH.map((_,i)=>card(i)).join('')+'</div><p class="dim">選択中：'+c[0]+'　得意色 <i class="dot" style="background:'+COLORS[c[1]]+'"></i>（その色のダメージ1.3倍）<br>スキル：'+SKN[c[6]]+'（'+SKD[c[6]]+'）／ '+c[7]+'個つなぐと使える</p>';
-  else h+='<p class="dim">N60% R28% SR10% SSR2%。同じぷにが出ると★UP（最大★5、HPと攻撃が+10%ずつ）。ランクが高いほど元の強さも上がります。</p><button class="gb" data-n="1">1回 100🪙</button><button class="gb" data-n="10">10回 900🪙<br><small>R以上1体確定</small></button><div class="gr">'+gres+'</div>';
-  p.innerHTML=h;p.style.display='flex';p.scrollTop=0;
+  let h='<div id="ph"><b>🪙 '+sv.coins+'</b><span><button class="tb'+(m==='s'?' on':'')+'" data-m="s">キャラ</button> <button class="tb'+(m==='u'?' on':'')+'" data-m="u">育成</button> <button class="tb'+(m==='g'?' on':'')+'" data-m="g">ガチャ</button></span><button class="tb" id="px" aria-label="とじる">✕</button></div>';
+  if(m==='a')h+=achHtml();else if(m!=='g')h+='<div id="grid">'+CH.map((_,i)=>i).sort((a,b)=>CH[a][3]-CH[b][3]||a-b).map(i=>card(i)).join('')+'</div><p class="dim">'+(m==='u'?'コインでレベルアップ！タップで強化（最大Lv10、1Lvごとにステータス+6%）。ランクが高いほど費用が増えます。':'編成（タップで入れ替え・最大3体）：'+sv.party.map(i=>CH[i][0]).join('・')+'<br>つなぐ色が得意色の人数ぶんダメージ+30%。技ゲージは、そのぷにの得意色をつなぐとたまります。')+'</p>';
+  else h+='<p class="dim">N58.4% R28% SR10% SSR2% UR1% UR⁺0.5% UR⁺⁺0.1%。同じぷにが出ると★UP（最大★5、HPと攻撃が+10%ずつ）。ランクが高いほど元の強さも上がります。</p><button class="gb" data-n="1">1回 100🪙</button><button class="gb" data-n="10">10回 900🪙<br><small>R以上1体確定</small></button><div class="gr">'+gres+'</div>';
+  const ps=p.dataset.m===m?p.scrollTop:0;p.innerHTML=h;p.style.display='flex';p.dataset.m=m;p.scrollTop=ps;
 }
 function pull(n){
   const cost=n===10?900:100;
@@ -131,23 +189,44 @@ function pull(n){
   sv.coins-=cost;let out='',hit=0;
   for(let k=0;k<n;k++){
     const r=Math.random();let rk=0,a=0;
-    for(;rk<3;rk++){a+=RATE[rk];if(r<a)break}
+    for(;rk<6;rk++){a+=RATE[rk];if(r<a)break}
     if(n===10&&k===9&&!hit&&rk===0)rk=1;
     if(rk>0)hit=1;
     const pl=CH.map((_,i)=>i).filter(i=>CH[i][3]===rk),i=pl[Math.floor(Math.random()*pl.length)],had=sv.own[i]||0;
     sv.own[i]=had+1;out+=card(i,had?'★UP':'NEW');
   }
-  save();gres=out;openPn('g');
+  sv.st.pl+=n;save();ach();gres=out;openPn('g');
 }
-const coinTxt=()=>{$('cb').textContent='🪙 '+sv.coins+'　使うキャラ：'+CH[sv.sel][0];$('pv').innerHTML=mkp(sv.sel,22)};
-function useSk(){
-  if(state!=='play'||sg<ch[7])return;
-  sg=0;const k=ch[6];
+const LBL={easy:'やさしい',normal:'ふつう',hard:'むずかしい',expert:'超むずかしい',hell:'地獄'};
+const coinTxt=()=>{
+  $('hc').textContent=sv.coins;$('hp').textContent=sv.pts;
+  $('hpt').innerHTML=sv.party.map(i=>'<div class="pm" data-info="'+i+'">'+mkp(i,40)+CH[i][0]+'</div>').join('');$('hpt').style.gridTemplateColumns='repeat('+Math.max(1,sv.party.length)+',1fr)';
+  document.querySelectorAll('.dif').forEach(b=>b.innerHTML=LBL[b.dataset.d]+'<br><small>ベスト '+getB(b.dataset.d)+'</small>');
+  $('mgb').disabled=sv.pts<100;$('acb').textContent='🏆 実績 '+Object.keys(sv.ac).length+'/'+AC.length;
+  $('hh').textContent=sv.pts<100?'ミニゲームはポイント100で遊べます（あと'+(100-sv.pts)+'pt）。ポイントはパズル終了時にもらえます。':'ポイントが貯まったので、ミニゲームで遊べます！';
+};
+function useSk(j){const id=pt[j];if(state!=='play'||id==null||sgs[j]<CH[id][7])return;sgs[j]=0;const k=CH[id][6];skfx(k,CH[id][3]);
   if(k==='heal'){php=Math.min(pmax,php+Math.round(pmax*.35));updUI();say('HPかいふく！')}
   if(k==='barrier'){barrier=5;say('バリア！5秒ダメージ無効')}
   if(k==='stop'){freeze=6;say('ストップ！敵が6秒止まる')}
   if(k==='burst'){burst=1;say('バースト待機！次のつなぎ3倍')}
+  if(k==='meteor'){en.hp-=Math.round(en.max*.35);hit();say('メテオ！');chk()}
+  if(k==='power'){pw+=.5;updUI();say('パワーアップ！攻撃力+0.5')}
+  if(k==='weaken'){en.dmg=Math.round(en.dmg*.7);say('よわらせ！敵の攻撃力ダウン')}
+  if(k==='nova'){en.hp-=Math.round(en.max*.6);php=Math.min(pmax,php+Math.round(pmax*.2));hit();say('ノヴァ！');chk()}
+  if(k==='fortress'){barrier=10;php=Math.min(pmax,php+Math.round(pmax*.3));updUI();say('ようさい！10秒ダメージ無効')}
 }
+const SKC={heal:'#51cf66',barrier:'#4dabf7',stop:'#74c0fc',burst:'#ff922b',meteor:'#ff6b6b',power:'#ffd43b',weaken:'#9775fa',nova:'#ff2d95',fortress:'#339af0'};
+function skfx(k,rk){
+  const w=sv.auto,col=SKC[k],big=rk>=3&&!w,fl=$('fl'),bn=$('bn');
+  bn.textContent=SKN[k]+'！';bn.style.setProperty('--bc',col);bn.style.fontSize=w?'24px':big?'56px':'44px';fl.style.background=col;
+  (w?[bn]:[fl,bn]).forEach(e=>{e.classList.remove('on');void e.offsetWidth;e.classList.add('on')});
+  for(let i=0;i<(w?6:big?48:28);i++)fxs.push({a:Math.random()*6.28,v:S*(2+Math.random()*(big?5:3)),r:S*(.1+Math.random()*.2),t:Math.random()*.2,col});
+  if(!w){fxs.push({ring:1,t:0,col});if(big||k==='meteor'||k==='nova'||k==='burst')shake()}
+}
+function lockN(n){for(let k=0;k<n;k++)g[Math.floor(Math.random()*ROWS)][Math.floor(Math.random()*COLS)].lk=6}
+function tgl(i){const p=sv.party,k=p.indexOf(i);if(k>=0){if(p.length>1)p.splice(k,1)}else{p.push(i);if(p.length>3)p.shift()}save();openPn('s')}
+function lvUp(i){if(lvl(i)>=LVMAX||sv.coins<lvCost(i))return;sv.coins-=lvCost(i);sv.lv[i]=lvl(i)+1;save();ach();openPn('u')}
 let df=DIFF.normal,dk='normal',en=null,php=100,atk=0,stage=0;
 const cv=document.getElementById('c'),ctx=cv.getContext('2d');
 const $=id=>document.getElementById(id);
@@ -169,14 +248,14 @@ if(window.ResizeObserver)new ResizeObserver(resize).observe($('wrap'));
 
 const mk=()=>({k:Math.floor(Math.random()*df.col),dy:0,w:Math.random()*6});
 function spawn(){
-  const e=ENEMIES[stage%5],lv=Math.floor(stage/5),s=1+lv*.6+stage*.05;
+  const bs=stage%5===4,e=bs?BOSS[Math.floor(stage/5)%4]:ENEMIES[stage%5],lv=Math.floor(stage/5),s=1+lv*.6+stage*.05;
   en={max:Math.round(e[2]*s*df.hp),iv:Math.max(2,e[3]*df.atk/(1+lv*.1)),dmg:Math.round(e[4]*df.dmg*(1+lv*.3)),weak:Math.floor(Math.random()*df.col)};
-  en.hp=en.max;atk=0;
-  $('em').textContent=e[1];
-  $('en').innerHTML=e[0]+' <small>弱点</small><span id="wk" style="background:'+COLORS[en.weak]+'"></span>';
+  en.hp=en.max;atk=0;en.bs=bs;en.sp=7;g.forEach(r=>r.forEach(o=>o.lk=0));if(bs)say('ボス出現！');
+  $('em').textContent=e[1];$('em').style.fontSize=bs?'58px':'44px';
+  $('en').innerHTML=(bs?'👑 ':'')+e[0]+' <small>弱点</small><span id="wk" style="background:'+COLORS[en.weak]+'"></span>';
   updUI();
 }
-function updUI(){$('ehp').style.width=Math.max(0,en.hp/en.max*100)+'%';$('php').style.width=Math.max(0,php/pmax*100)+'%';$('pa').textContent='攻撃力 ×'+(pw*ab).toFixed(1);$('mn').textContent=ch[0]+' HP '+Math.max(0,Math.round(php))+'/'+pmax}
+function updUI(){$('ehp').style.width=Math.max(0,en.hp/en.max*100)+'%';$('php').style.width=Math.max(0,php/pmax*100)+'%';$('pa').textContent='ATK×'+(pw*ab).toFixed(1);$('mn').textContent='HP '+Math.max(0,Math.round(php))+'/'+pmax}
 function say(t){const cb=$('combo');cb.textContent=t;cb.style.opacity=1;clearTimeout(cb._t);cb._t=setTimeout(()=>cb.style.opacity=0,1000)}
 function newMission(){
   const r=Math.random(),m=df.ms;
@@ -196,10 +275,7 @@ function hud(){
   const m=mi?'🎯 '+tx+'（残り'+Math.ceil(mi.left)+'秒'+(mi.ty==='weak'?' '+mi.prog+'/'+mi.need:'')+'）':'🎯 次のミッションを準備中…';
   if(m!==_h){_h=m;$('mt').innerHTML=m}
   $('mb').style.width=(mi?mi.left/mi.total*100:0)+'%';$('ms').classList.toggle('warn',!!mi&&mi.left<5);
-  const sb=$('skb'),rd=sg>=ch[7],on=(ch[6]==='barrier'&&barrier>0)||(ch[6]==='stop'&&freeze>0)||(ch[6]==='burst'&&burst>0),
-    t=SKN[ch[6]]+'<br><small>'+(on?'発動中！':rd?'タップで使う':sg+'/'+ch[7])+'</small>';
-  if(sb.dataset.t!==t){sb.dataset.t=t;sb.innerHTML=t}
-  sb.style.setProperty('--p',Math.min(100,sg/ch[7]*100)+'%');sb.classList.toggle('rd',rd);
+  pt.forEach((id,j)=>{const c=CH[id],sb=sbs[j],rd=sgs[j]>=c[7],on=((c[6]==='barrier'||c[6]==='fortress')&&barrier>0)||(c[6]==='stop'&&freeze>0)||(c[6]==='burst'&&burst>0),t=SKN[c[6]]+'<br><small>'+(on?'発動中':rd?'タップ！':Math.floor(sgs[j])+'/'+c[7])+'</small>';if(sb.dataset.t!==t){sb.dataset.t=t;sb.innerHTML=t}sb.style.setProperty('--p',Math.min(100,sgs[j]/c[7]*100)+'%');sb.classList.toggle('rd',rd)});
 
 }
 function hit(){const e=$('em');e.classList.add('hit');setTimeout(()=>e.classList.remove('hit'),120)}
@@ -207,17 +283,17 @@ function shake(){const w=$('wrap');w.classList.remove('shake');void w.offsetWidt
 function newGame(k){
   dk=k;df=DIFF[k];g=[];
   for(let r=0;r<ROWS;r++){g.push([]);for(let c=0;c<COLS;c++)g[r].push(mk())}
-  score=0;stage=0;ch=CH[sv.sel];{const t=stat(sv.sel);pmax=t.hp;ab=t.atk}php=pmax;pw=1;sg=0;burst=0;barrier=freeze=0;runCoins=0;$('cc').textContent=0;$('pv').innerHTML=mkp(sv.sel,22);mi=null;mscd=1.5;path=[];pops=[];state='play';
+  score=0;stage=0;pt=sv.party.slice();$('sks').innerHTML=pt.map((id,j)=>'<button class="sk" data-j="'+j+'" style="border-color:'+COLORS[CH[id][1]]+';--ac:'+COLORS[CH[id][1]]+'"></button>').join('');sbs=[...document.querySelectorAll('.sk')];{const ts=pt.map(i=>stat(i));pmax=Math.round(ts.reduce((a,t)=>a+t.hp,0)*.6);ab=+(ts.reduce((a,t)=>a+t.atk,0)/ts.length).toFixed(2)}php=pmax;pw=1;sgs=[0,0,0];cmb=ct=0;cm=1;fxs=[];burst=0;barrier=freeze=0;runCoins=0;$('cc').textContent=0;mi=null;mscd=1.5;path=[];pops=[];state='play';
   best=getB(k);$('bs').textContent=best;$('sc').textContent=0;
-  spawn();$('ov').style.display='none';
+  spawn();$('ov').style.display='none';$('home').style.display='none';
 }
 function end(){
   state='over';path=[];
   const nb=score>best;
   if(nb){best=score;$('bs').textContent=best;try{localStorage.setItem('puni-b-'+dk,best)}catch(e){}}
   $('t').textContent='やられた…';
-  const bn=Math.round(score*5*df.cn);sv.coins+=bn;runCoins+=bn;save();coinTxt();
-  $('m').textContent='倒した敵 '+score+'体'+(nb?'（ベスト更新！）':'')+'。コイン +'+runCoins+'（スコアボーナス '+bn+'）';
+  const bn=Math.round(score*3*df.cn*.8),gp=Math.floor(score*df.cn/2);sv.coins+=bn;runCoins+=bn;sv.pts+=gp;sv.st.r++;ach();save();coinTxt();
+  $('m').innerHTML='倒した敵 '+score+'体'+(nb?'（ベスト更新！）':'')+'<br>コイン +'+runCoins+'（スコアボーナス '+bn+'）<br>⭐ ポイント +'+gp+'（合計 '+sv.pts+'）';
   $('ov').style.display='flex';
 }
 document.querySelectorAll('.dif').forEach(b=>b.onclick=()=>newGame(b.dataset.d));
@@ -237,13 +313,13 @@ function tryAdd(p){
   if(path.length>1){const b=path[path.length-2];if(b.r===p.r&&b.c===p.c){path.pop();return}}
   if(path.some(q=>q.r===p.r&&q.c===p.c))return;
   if(Math.max(Math.abs(p.r-l.r),Math.abs(p.c-l.c))!==1)return;
-  if(g[p.r][p.c].k!==g[path[0].r][path[0].c].k)return;
+  if(g[p.r][p.c].lk>0||g[p.r][p.c].k!==g[path[0].r][path[0].c].k)return;
   path.push(p);
 }
 cv.addEventListener('pointerdown',e=>{
   if(state!=='play')return;
   cv.setPointerCapture(e.pointerId);
-  const p=cellAt(e.clientX,e.clientY,true);if(p)path=[p];
+  const p=cellAt(e.clientX,e.clientY,true);if(p&&!(g[p.r][p.c].lk>0))path=[p];
   lx=e.clientX;ly=e.clientY;
 });
 cv.addEventListener('pointermove',e=>{
@@ -262,16 +338,14 @@ function release(){
   if(n>=3){
     const kk=g[path[0].r][path[0].c].k,col=COLORS[kk];
     path.forEach(p=>{pops.push({x:p.c,y:p.r,col,t:0});g[p.r][p.c]=null});
-    const w=kk===en.weak,pts=Math.round((n*6+(n-3)*n*2)*(w?2:1)*pw*ab*(kk===ch[1]?1.3:1)*(burst?3:1));
-    en.hp-=pts;hit();sg=Math.min(ch[7],sg+n);burst=0;
+    if(n>=5){cmb=ct>0?cmb+1:1;ct=3}else{cmb=0;ct=0}sv.st.mc=Math.max(sv.st.mc,cmb);cm=1+Math.max(0,Math.min(cmb-1,10))*.15;const w=kk===en.weak,pts=Math.round((n*6+(n-3)*n*2)*(w?2:1)*pw*ab*(1+.3*pt.filter(i=>CH[i][1]===kk).length)*(burst?3:1)*cm);
+    en.hp-=pts;hit();pt.forEach((id,j)=>{if(CH[id][1]===kk||CH[id][1]>=df.col)sgs[j]=Math.min(CH[id][7],sgs[j]+n)});burst=0;
     const cb=$('combo');cb.textContent=n+'つなぎ！ '+pts+'ダメージ'+(w?'（弱点！）':'');cb.style.opacity=1;
     clearTimeout(cb._t);cb._t=setTimeout(()=>cb.style.opacity=0,700);
     fall();
     if(mi){if(mi.ty==='chain'&&n>=mi.n)done(true);else if(mi.ty==='weak'&&w&&++mi.prog>=mi.need)done(true)}
-    if(en.hp<=0){if(mi&&mi.ty==='kill')done(true);score++;$('sc').textContent=score;const gn=Math.round((8+stage*2)*df.cn);sv.coins+=gn;runCoins+=gn;$('cc').textContent=runCoins;save();php=Math.min(pmax,php+Math.round(pmax*.25));say('+'+gn+'コイン');stage++;spawn()}else updUI();
+    chk();}path=[];}function chk(){if(en.hp<=0){if(mi&&mi.ty==='kill')done(true);score++;$('sc').textContent=score;sv.st.k++;if(en.bs)sv.st.b++;const gn=Math.round((4+stage)*df.cn*(en.bs?3:1)*.8);sv.coins+=gn;runCoins+=gn;$('cc').textContent=runCoins;save();php=Math.min(pmax,php+Math.round(pmax*.25));ach();say('+'+gn+'コイン');stage++;spawn()}else updUI();
   }
-  path=[];
-}
 cv.addEventListener('pointerup',release);
 cv.addEventListener('pointercancel',()=>{path=[]});
 
@@ -303,7 +377,7 @@ function frame(ts){
   ctx.clearRect(0,0,W,H);
   if(state==='play'&&en){
     if(barrier>0)barrier-=dt;
-    if(freeze>0)freeze-=dt;else atk+=dt;
+    if(freeze>0)freeze-=dt;else atk+=dt;if(ct>0&&(ct-=dt)<=0){cmb=0;cm=1}if(en.bs&&freeze<=0&&(en.sp-=dt)<=0){en.sp=8;lockN(7);say('ロック攻撃！')}$('cmbx').textContent=cmb>1?'COMBO '+cmb+' ×'+cm.toFixed(2):'';if(sv.auto&&(ax-=dt)<=0){ax=.7;for(let j=0;j<pt.length;j++){const id=pt[j],k=CH[id][6];if(sgs[j]>=CH[id][7]&&!((k==='heal'&&php>pmax*.7)||(k==='fortress'&&php>pmax*.8))){useSk(j);break}}}
     $('eatk').style.width=Math.min(100,atk/en.iv*100)+'%';
     if(atk>=en.iv){atk=0;if(barrier>0)say('ガード！');else{php-=en.dmg;shake();updUI();if(php<=0)end()}}
     if(mi){mi.left-=dt;if(mi.left<=0)done(false)}else if((mscd-=dt)<=0)newMission();
@@ -313,12 +387,12 @@ function frame(ts){
   const pk=path.length?g[path[0].r][path[0].c].k:-1,lp=path[path.length-1];
   for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
     const o=g[r]&&g[r][c];if(!o)continue;
-    o.dy+=(0-o.dy)*Math.min(1,dt*14);if(Math.abs(o.dy)<.005)o.dy=0;
+    o.dy+=(0-o.dy)*Math.min(1,dt*14);if(Math.abs(o.dy)<.005)o.dy=0;if(o.lk>0&&state==='play')o.lk-=dt;
     const cx=ox+(c+.5)*S,cy=oy+(r+.5+o.dy)*S,inP=hot.has(r*COLS+c),same=pk<0||o.k===pk;
-    const near=pk>=0&&same&&!inP&&Math.max(Math.abs(r-lp.r),Math.abs(c-lp.c))===1;
+    const near=pk>=0&&same&&!inP&&!(o.lk>0)&&Math.max(Math.abs(r-lp.r),Math.abs(c-lp.c))===1;
     ctx.globalAlpha=same?1:.28; // つなげない色はうすく
     if(pk>=0&&same){ctx.beginPath();ctx.arc(cx,cy,S*(inP?.52:.47),0,7);ctx.fillStyle=COLORS[o.k]+(inP?'66':'44');ctx.fill()}
-    blob(cx,cy,S*.4,COLORS[o.k],t,o.w,inP);
+    blob(cx,cy,S*.4,COLORS[o.k],t,o.w,inP);if(o.lk>0){ctx.globalAlpha=.6;ctx.fillStyle='#222';ctx.beginPath();ctx.arc(cx,cy,S*.4,0,7);ctx.fill();ctx.globalAlpha=1;ctx.font=(S*.34)+'px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('🔒',cx,cy)}
     ctx.globalAlpha=1;
     if(inP||near){ // つなげた/つなげられるぷにに白いリング
       ctx.beginPath();ctx.arc(cx,cy,S*.47*(near?1+.07*Math.sin(t*10):1.04),0,7);
@@ -336,17 +410,126 @@ function frame(ts){
     for(let i=0;i<6;i++){const a=i*1.047+.3,d=S*(.3+.5*k);ctx.beginPath();ctx.arc(x+Math.cos(a)*d,y+Math.sin(a)*d,S*.1*(1-k),0,7);ctx.fill()}
     ctx.globalAlpha=1;
   });
+  fxs=fxs.filter(p=>(p.t+=dt)<.9);
+  fxs.forEach(p=>{const k=p.t/.9;ctx.globalAlpha=1-k;if(p.ring){ctx.lineWidth=S*.3*(1-k);ctx.strokeStyle=p.col;ctx.beginPath();ctx.arc(W/2,H/2,S*6*k,0,7);ctx.stroke();return}ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(W/2+Math.cos(p.a)*p.v*k,H/2+Math.sin(p.a)*p.v*k,p.r*(1-k*.6),0,7);ctx.fill()});
+  ctx.globalAlpha=1;
   requestAnimationFrame(frame);
 }
-resize();hud();coinTxt();
-$('skb').onclick=useSk;
+const mcv=$('mc'),mx=mcv.getContext('2d');let rc=null;
+function raceStart(){
+  if(sv.pts<100||(rc&&rc.on))return;
+  sv.pts-=100;save();coinTxt();
+  const d=Math.min(2,devicePixelRatio||1),W=innerWidth,H=innerHeight;
+  mcv.width=W*d;mcv.height=H*d;mx.setTransform(d,0,0,d,0,0);
+  rc={W,H,tp:parseFloat(getComputedStyle($('mg')).paddingTop)||0,t:30,gp:0,gear:1,pg:1,mg:1,gu:0,sc:0,x:1,ln:1,it:[],sp:.5,cr:0,off:0,on:1,l:0};
+  $('rr').style.display='none';$('mg').style.display='block';requestAnimationFrame(raceLoop);
+}
+function raceEnd(){
+  rc.on=0;const sc=Math.floor(rc.sc),cn=Math.round(sc*.8);sv.coins+=cn;sv.st.rb=Math.max(sv.st.rb,sc);save();coinTxt();ach();
+  $('rrt').textContent='タイムアップ！';
+  $('rrm').innerHTML='スコア '+sc+'<br>最高ギア '+rc.mg+'<br>🪙 コイン +'+cn;
+  $('rr').style.display='flex';
+}
+function raceLoop(ts){
+  if(!rc||!rc.on)return;
+  const dt=rc.l?Math.min((ts-rc.l)/1000,.05):.016;rc.l=ts;
+  const {W,H,tp}=rc,lw=Math.min(W,420)/3,x0=(W-lw*3)/2,py=H*.78;
+  if(rc.t>0){
+    rc.t-=dt;rc.gp+=dt;rc.cr-=dt;rc.gu-=dt;
+    rc.gear=Math.min(5,1+Math.floor(rc.gp/4));if(rc.gear>rc.pg)rc.gu=.9;rc.pg=rc.gear;rc.mg=Math.max(rc.mg,rc.gear);
+    rc.sc+=dt*rc.gear*12;rc.x+=(rc.ln-rc.x)*Math.min(1,dt*12);
+    const v=(H*.35+rc.gear*H*.12)*(rc.cr>0?.5:1);rc.off+=v*dt;
+    if((rc.sp-=dt)<=0){rc.sp=Math.max(.35,1.1-rc.gear*.12);rc.it.push({l:Math.floor(Math.random()*3),y:-lw,b:Math.random()<.28})}
+    rc.it.forEach(o=>{o.y+=v*dt;if(Math.abs(o.l-rc.x)<.65&&Math.abs(o.y-py)<lw*.5){if(o.b){o.d=1;rc.gp+=4;rc.sc+=40}else if(rc.cr<=0){o.d=1;rc.cr=.8;rc.gp=Math.max(0,rc.gp-8)}}});
+    rc.it=rc.it.filter(o=>!o.d&&o.y<H+lw);
+    if(rc.t<=0)raceEnd();
+  }
+  mx.shadowColor='rgba(0,0,0,.5)';mx.shadowBlur=0;
+  mx.fillStyle='#3a9d4f';mx.fillRect(0,0,W,H);
+  mx.fillStyle='#555a63';mx.fillRect(x0,0,lw*3,H);
+  mx.fillStyle='#fff';mx.fillRect(x0-4,0,4,H);mx.fillRect(x0+lw*3,0,4,H);
+  mx.strokeStyle='#fff';mx.lineWidth=4;mx.setLineDash([lw*.35,lw*.35]);mx.lineDashOffset=-rc.off;
+  for(let i=1;i<3;i++){mx.beginPath();mx.moveTo(x0+lw*i,0);mx.lineTo(x0+lw*i,H);mx.stroke()}
+  mx.setLineDash([]);
+  mx.font=(lw*.5)+'px sans-serif';mx.textAlign='center';mx.textBaseline='middle';mx.fillStyle='#fff';
+  rc.it.forEach(o=>mx.fillText(o.b?'⚡':'🚧',x0+lw*(o.l+.5),o.y));
+  const px=x0+lw*(rc.x+.5),r=lw*.3;
+  if(rc.cr<=0||Math.floor(rc.cr*12)%2){
+    mx.beginPath();mx.arc(px,py,r,0,7);mx.fillStyle=COLORS[0];mx.fill();
+    for(const s of[-1,1]){mx.beginPath();mx.arc(px+s*r*.35,py-r*.1,r*.2,0,7);mx.fillStyle='#fff';mx.fill();mx.beginPath();mx.arc(px+s*r*.37,py-r*.08,r*.09,0,7);mx.fillStyle='#2b2030';mx.fill()}
+  }
+  mx.shadowBlur=4;mx.fillStyle='#fff';mx.font='700 20px sans-serif';
+  mx.textAlign='left';mx.fillText('TIME '+Math.max(0,Math.ceil(rc.t)),16,tp+30);
+  mx.textAlign='right';mx.fillText('SCORE '+Math.floor(rc.sc),W-16,tp+30);
+  mx.textAlign='center';mx.font='800 34px sans-serif';mx.fillText('GEAR '+rc.gear,W/2,tp+74);
+  for(let i=0;i<5;i++){mx.fillStyle=i<rc.gear?'#ffd43b':'rgba(255,255,255,.3)';mx.fillRect(W/2-70+i*28,tp+92,24,10)}
+  if(rc.gu>0){mx.fillStyle='#ffd43b';mx.font='900 44px sans-serif';mx.fillText('GEAR UP!',W/2,H*.4)}
+  if(rc.t>26){mx.fillStyle='#fff';mx.font='700 18px sans-serif';mx.fillText('タップ・スライドで移動！⚡でギアアップ',W/2,H*.5)}
+  mx.shadowBlur=0;
+  requestAnimationFrame(raceLoop);
+}
+mcv.addEventListener('pointerdown',e=>{if(rc&&rc.on&&rc.t>0){rc.px0=e.clientX;rc.dg=0;rc.pd=1;if(mcv.setPointerCapture)mcv.setPointerCapture(e.pointerId)}});
+mcv.addEventListener('pointermove',e=>{if(!rc||!rc.pd||!rc.on||rc.t<=0)return;if(Math.abs(e.clientX-rc.px0)>10)rc.dg=1;if(rc.dg){const lw=Math.min(rc.W,420)/3;rc.ln=Math.max(0,Math.min(2,(e.clientX-(rc.W-lw*3)/2)/lw-.5))}});
+mcv.addEventListener('pointerup',e=>{if(!rc||!rc.pd)return;rc.pd=0;if(rc.on&&rc.t>0)rc.ln=rc.dg?Math.round(rc.ln):Math.max(0,Math.min(2,Math.round(rc.ln)+(e.clientX<innerWidth/2?-1:1)))});
+mcv.addEventListener('pointercancel',()=>{if(rc)rc.pd=0});
+addEventListener('keydown',e=>{if(rc&&rc.on&&rc.t>0)rc.ln=Math.max(0,Math.min(2,rc.ln+(e.key==='ArrowLeft'?-1:e.key==='ArrowRight'?1:0)))});
+$('mgb').onclick=raceStart;$('rt').onclick=()=>newGame(dk);
+$('hm').onclick=()=>{$('ov').style.display='none';$('home').style.display='flex'};
+$('rrb').onclick=()=>{$('mg').style.display='none';rc=null};
+const AC=[],CF=.8;
+const mka=(k,nm,v,tg,cs,ps)=>tg.forEach((t,i)=>AC.push({id:k+t,n:nm(t),v,t,c:Math.round(cs[i]*CF),p:(ps&&ps[i])||0}));
+const ownN=()=>CH.filter((_,i)=>sv.own[i]).length;
+mka('o',t=>'ぷにを'+t+'体集める',ownN,[5,10,20,30],[50,100,200,400]);
+AC.push({id:'oall',n:'全てのぷにを集める（全キャラコンプ）',v:ownN,t:CH.length,c:Math.round(4000*CF),p:30});
+[0,1,2,3,4,5,6].forEach(r=>{const t=CH.filter(c=>c[3]===r).length;AC.push({id:'rc'+r,n:RK[r]+'ランクを全て集める',v:()=>CH.filter((c,i)=>c[3]===r&&sv.own[i]).length,t,c:Math.round([150,300,600,1200,2500,4000,6000][r]*CF),p:[0,0,3,5,10,15,20][r]})});
+[2,3,4,5,6].forEach(r=>AC.push({id:'rk'+r,n:RK[r]+'ランクのぷにを手に入れる',v:()=>CH.some((c,i)=>c[3]===r&&sv.own[i])?1:0,t:1,c:Math.round([0,0,200,400,1000,2500,5000][r]*CF),p:r>=4?5:0}));
+mka('k',t=>'敵を合計'+t+'体倒す',()=>sv.st.k,[10,50,100,300,1000,3000,10000],[30,60,120,300,600,1500,4000],[0,0,0,0,5,10,30]);
+mka('b',t=>'ボスを'+t+'体倒す',()=>sv.st.b,[1,5,20,50,100,300],[100,200,400,800,1500,4000],[0,0,0,5,10,20]);
+mka('r',t=>'パズルを'+t+'回遊ぶ',()=>sv.st.r,[10,50,100,300,1000],[50,150,300,800,2000],[0,0,0,0,10]);
+mka('g',t=>'ガチャを'+t+'回引く',()=>sv.st.pl,[10,50,100,300,1000],[50,150,300,800,2000],[0,0,0,0,10]);
+mka('c',t=>t+'コンボを決める',()=>sv.st.mc,[5,10,15,20,30],[50,100,200,400,1000],[0,0,0,0,5]);
+mka('l',t=>'ぷにをLv'+t+'まで育てる',()=>Math.max(1,...Object.values(sv.lv)),[5,10],[150,400]);
+mka('v',t=>'Lv10のぷにを'+t+'体育てる',()=>Object.values(sv.lv).filter(x=>x>=LVMAX).length,[1,5,10,20],[300,800,1500,3000],[0,0,5,15]);
+mka('s',t=>'★5のぷにを'+t+'体にする',()=>CH.filter((_,i)=>(sv.own[i]||0)>=6).length,[1,5,10,CH.length],[500,1500,3000,20000],[0,0,5,100]);
+mka('m',t=>'ぷにグランプリで'+t+'点',()=>sv.st.rb,[500,1000,1500,2000],[100,200,400,1000],[0,0,3,10]);
+Object.keys(DIFF).forEach((d,i)=>[[15,20,20,15,10],[40,45,40,30,20]].forEach((ts,k)=>{const t=ts[i];AC.push({id:(k?'e':'d')+d,n:LBL[d]+'で'+t+'体倒す',v:()=>+getB(d)||0,t,c:Math.round([[100,150,250,400,800],[300,500,800,1500,3000]][k][i]*CF),p:k?[0,0,3,8,15][i]:(i>3?3:0)})}));
+function ach(){
+  const ns=[];
+  AC.forEach(a=>{if(!sv.ac[a.id]&&a.v()>=a.t){sv.ac[a.id]=1;sv.coins+=a.c;sv.pts+=a.p;ns.push('🏆 '+a.n+'<br>🪙+'+a.c+(a.p?' ⭐+'+a.p:''))}});
+  if(ns.length){save();coinTxt();toast(ns.join('<br>'))}
+}
+function toast(h){const e=$('tst');e.innerHTML=h;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>{e.style.display='none'},3200)}
+function achHtml(){
+  return '<div id="al">'+AC.map(a=>{const d=sv.ac[a.id],v=Math.min(a.v(),a.t);return '<div class="ar'+(d?' dn':'')+'"><b>'+(d?'✅ ':'')+a.n+'</b><span>'+v+' / '+a.t+'　🪙'+a.c+(a.p?' ⭐'+a.p:'')+'</span><i style="width:'+Math.round(v/a.t*100)+'%"></i></div>'}).join('')+'</div>';
+}
+const updAuto=()=>{const b=$('au');b.classList.toggle('on',!!sv.auto);b.innerHTML='AUTO<br><small>'+(sv.auto?'ON':'OFF')+'</small>'};
+$('au').onclick=()=>{sv.auto=!sv.auto;save();updAuto()};
+function showInf(i){
+  const c=CH[i],t=stat(i),e=$('inf'),dot='<i style="display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle;background:'+COLORS[c[1]]+'"></i>';
+  e.innerHTML='<div class="ic"><span class="rk" style="background:'+RC[c[3]]+'">'+RK[c[3]]+'</span>'+mkp(i,64)+'<h2>'+c[0]+'</h2>'
+    +'<div class="it"><span>Lv '+lvl(i)+' / '+LVMAX+'</span><span>★'+star(i)+' / 5（所持 '+(sv.own[i]||0)+'）</span><span>HP '+t.hp+'</span><span>攻撃力 ×'+t.atk+'</span></div>'
+    +'<p><b>得意色</b> '+dot+'<br><small>この色のぷにをつなぐと、ダメージが+30%され、技ゲージがたまります。</small></p>'
+    +'<p><b>技：'+SKN[c[6]]+'</b><br>'+SKD[c[6]]+'<br><small>得意色のぷにを合計'+c[7]+'個つなぐと使えます。</small></p>'
+    +'<p class="dim">タップで閉じる</p></div>';
+  e.style.display='flex';
+}
+$('inf').onclick=()=>{$('inf').style.display='none'};
+let lpT=0,lpX=0,lpY=0,lpF=false;
+const lpC=()=>clearTimeout(lpT);
+document.addEventListener('pointerdown',e=>{lpF=false;lpC();const t=e.target.closest&&e.target.closest('[data-info]');if(!t)return;lpX=e.clientX;lpY=e.clientY;lpT=setTimeout(()=>{lpF=true;showInf(+t.dataset.info)},450)},true);
+document.addEventListener('pointermove',e=>{if(Math.abs(e.clientX-lpX)>10||Math.abs(e.clientY-lpY)>10)lpC()},true);
+document.addEventListener('pointerup',lpC,true);document.addEventListener('pointercancel',lpC,true);
+document.addEventListener('click',e=>{if(lpF){e.stopPropagation();e.preventDefault();lpF=false}},true);
+document.addEventListener('contextmenu',e=>{if(e.target.closest&&e.target.closest('[data-info]'))e.preventDefault()});
+updAuto();resize();hud();coinTxt();ach();
+$('sks').onclick=e=>{const b=e.target.closest('.sk');if(b)useSk(+b.dataset.j)};
 document.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>openPn(b.dataset.o));
 $('pn').onclick=e=>{
   const t=e.target.closest('button,.cd');if(!t)return;
   if(t.id==='px'){$('pn').style.display='none';coinTxt()}
   else if(t.dataset.m)openPn(t.dataset.m);
   else if(t.dataset.n)pull(+t.dataset.n);
-  else if(t.dataset.i){sv.sel=+t.dataset.i;save();openPn('s')}
+  else if(t.dataset.i){pm==='u'?lvUp(+t.dataset.i):tgl(+t.dataset.i)}
 };
 for(let r=0;r<ROWS;r++){g.push([]);for(let c=0;c<COLS;c++)g[r].push(mk())}
 requestAnimationFrame(frame);
